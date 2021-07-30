@@ -1,4 +1,9 @@
-function printingTable() {
+class Sudoku {
+    constructor() {
+
+    }
+
+    printingTable() {
     var body = document.getElementsByTagName("body")[0];
 
     var tbl = document.createElement("table");
@@ -8,11 +13,17 @@ function printingTable() {
         var row = document.createElement("tr");
 
         for (var i = 0; i < 9; i++) {
+
             var cell = document.createElement("td");
+
+            // if (!(document.getElementById(String(i) + String(j)).value == "")) {
+
+            // }
 
             var numberInput = document.createElement("input");
             numberInput.setAttribute("type", "number");
-            numberInput.setAttribute("class", "squares")
+            numberInput.setAttribute("class", "squares");
+            numberInput.setAttribute("id", String(i) + String(j));
 
             cell.appendChild(numberInput);
             row.appendChild(cell);
@@ -23,7 +34,13 @@ function printingTable() {
     body.appendChild(tbl)
 }
 
+
+
+
+}
+
 function playSudoku() {
     // load in sudoku class and call all methods from the class to enable the game to be played.
     //dynamically check input?
+    game = new Sudoku();
 }
