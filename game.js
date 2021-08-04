@@ -4,14 +4,26 @@ class Sudoku {
 
     }
 
-    pickPuzzle(n) {
-        var fr = new FileReader();
-        fr.onload = function () {
-            document.getElementById('output')
-                .textContent = fr.result;
+    pickPuzzle() {
+
+        var result = null;
+        var xmlhttp = new XMLHttpRequest();
+
+        if (!xmlhttp) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return "Mewh";
         }
 
-        fr.readAsText(this.files[0]);
+        xmlhttp.open("GET", "LearningJavascript\sudokus.txt", true);
+        xmlhttp.send();
+        
+        result = xmlhttp.responseText;
+
+        if (result == null) {
+            result = "This doesn't work :("
+        }
+
+        return result
     }
 
     printingTable() {
@@ -42,7 +54,7 @@ class Sudoku {
             tblBody.appendChild(row)
         }
         tbl.appendChild(tblBody);
-        body.appendChild(tbl)
+        body.appendChild(tbl);
     }
 }
 
@@ -52,4 +64,6 @@ function playSudoku() {
     //dynamically check input?
     game = new Sudoku();
     game.printingTable();
+    document.getElementById("test").innerHTML = game.pickPuzzle();
 }
+
